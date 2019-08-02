@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+       <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"></script>
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script src="https://webapi.amap.com/maps?v=1.4.14&key=f96a9f8b33f08ffbfcd148fdc0abea4b"></script>
+       <script type="text/javascript" src="echarts-amap.min.js" charset="UTF-8"></script>
+<!--       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=FPc9CtMPltovruw3bHHLef8QF6auuetx&__ec_v__=20190126"></script>-->
+<!--       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>-->
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+           var dom = document.getElementById("container");
+           var myChart = echarts.init(dom); //拿到echart对象。
+           $.get('https://mrzse.github.io./result-loc.json', function (data) {
+               var points = data.map(function (seg) {
+                   if(seg.coord && seg.name && seg.amt && seg.cnt){
+                       return {
+                           name: seg.name,
+                           value: seg.coord.concat(seg.amt,seg.cnt)
+                       }
+                   }
+               });
+               myChart.setOption(option = {
+                   animation: false,
+                   amap: {
+                     maxPitch: 60,
+                     pitch: 30, //45 俯仰角
+                     viewMode: '2D',
+                     zoom: 14,
+                     expandZoomRange: true,
+                     zooms: [3, 20],
+                     mapStyle: 'amap://styles/91efbbc655ee096897f47f6ee34d1707', //地图主题
+                     center: [111.68, 29.02], //中心点
+                     rotation: 0,  //顺时针旋转角度
+                     resizeEnable: true
+                   },
+                   series: [{
+                       type: 'scatter',
+                       coordinateSystem: 'amap',
+                       data: points,
+                       symbolSize: function (val) {
+                           if(val){
+                               if(val[2]<100){
+                                   return 5;
+                               } else if(val[2]>=100 && val[2]<1000){
+                                   return 8;
+                               } else if(val[2]>=1000 && val[2]<10000){
+                                   return 11;
+                               } else {
+                                   return 14;
+                               }
+                           }
+                       },
+                       label: {
+                           normal: {
+                               formatter: '{b}\n交易额：{@[2]}\n交易量：{@[3]}',
+                               position: 'right',
+                               show: false,
+                               padding: 10,
+                               backgroundColor: '#646464',
+                               color:'white',
+                               fontSize: 16,
+                               borderRadius: 5
+                           },
+                           emphasis: {
+                               show: true
+                           },
+
+                       },
+                       itemStyle: {
+                           normal: {
+                               color: 'red'
+                           }
+                       }
+                   }]
+               });
+           });
+           var map = myChart.getModel().getComponent('amap').getAMap();
+           var layer = myChart.getModel().getComponent('amap').getLayer();
+       </script>
+   </body>
+</html>
