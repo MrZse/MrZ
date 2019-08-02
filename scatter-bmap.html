@@ -18,7 +18,7 @@
        <script type="text/javascript">
            var dom = document.getElementById("container");
            var myChart = echarts.init(dom); //拿到echart对象。
-           $.get('http://192.168.43.239:8000/result-loc.json', function (data) {
+           $.get('https://mrzse.github.io./result-loc.json', function (data) {
                var points = data.map(function (seg) {
                    if(seg.coord && seg.name && seg.amt && seg.cnt){
                        return {
