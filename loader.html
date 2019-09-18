@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>loader</title>
+	<style>
+		*{
+			margin: 0;
+		}
+		.container{
+			width: 150px;
+			height: 180px;
+			background: rgba(0,0,0,.5);
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate3d(-50%,-50%,0);
+			border-radius: 10px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-end;
+		}
+		.logo{
+			position: relative;
+			width: 100px;
+			height: 100px;
+			bottom: 50%;
+			transform: translate3d(0,67%,0);
+		}
+		.logo > i{
+			display: block;
+			width: 4px;
+			height: 11px;
+			border-radius: 50px;
+			background: white;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+		}
+		.logo > i:first-child{
+			transform: translate3d(-50%,-12px,0);
+			animation: roll 1.3s infinite;
+		}
+		.logo > i:nth-child(2){
+			transform: translate3d(-50%,-12px,0) rotate(30deg);
+			transform-origin: 50% calc(100% + 12px);
+			animation: roll 1.3s .1s infinite;
+		}
+		.logo > i:nth-child(3){
+			transform: translate3d(-50%,-12px,0) rotate(60deg);
+			transform-origin: 50% calc(100% + 12px);
+			animation: roll 1.3s .2s infinite;
+		}
+		.logo > i:nth-child(4){
+			transform: translate3d(-50%,-12px,0) rotate(90deg);
+			transform-origin: 50% calc(100% + 12px);
+			animation: roll 1.3s .3s infinite;
+		 }
+		.logo > i:nth-child(5){
+			transform: translate3d(-50%,-12px,0) rotate(120deg);
+			transform-origin: 50% calc(100% + 12px);
+			animation: roll 1.3s .4s infinite;
+		}
+		.logo > i:nth-child(6){
+			transform: translate3d(-50%,-12px,0) rotate(150deg);
+			transform-origin: 50% calc(100% + 12px);
+			animation: roll 1.3s .5s infinite;
+		}
+		.logo > i:nth-child(7){
+			transform: translate3d(-50%,-12px,0) rotate(180deg);
+			transform-origin: 50% calc(100% + 12px);
+			animation: roll 1.3s .6s infinite;
+		}
+		.logo > i:nth-child(8){
+			transform: translate3d(-50%,-12px,0) rotate(210deg);
+			transform-origin: 50% calc(100% + 12px);
+			animation: roll 1.3s .7s infinite;
+		}
+		.logo > i:nth-child(9){
+			transform: translate3d(-50%,-12px,0) rotate(240deg);
+			transform-origin: 50% calc(100% + 12px);
+			animation: roll 1.3s .8s infinite;
+		}
+		.logo > i:nth-child(10){
+			transform: translate3d(-50%,-12px,0) rotate(270deg);
+			transform-origin: 50% calc(100% + 12px);
+			animation: roll 1.3s .9s infinite;
+		}
+		.logo > i:nth-child(11){
+			transform: translate3d(-50%,-12px,0) rotate(300deg);
+			transform-origin: 50% calc(100% + 12px);
+			animation: roll 1.3s 1s infinite;
+		}
+		.logo > i:nth-child(12){
+			transform: translate3d(-50%,-12px,0) rotate(330deg);
+			transform-origin: 50% calc(100% + 12px);
+			animation: roll 1.3s 1.2s infinite;
+		}
+		.text{
+			color: white;
+			margin-bottom: 30px;
+			font-family:  SimHei, Helvetica, Arial, sans-serif;
+		}
+		@keyframes roll {
+			0%{
+				background: rgba(255,255,255,1);
+			}
+			25%{
+				background: rgba(255,255,255,.6);
+			}
+			50%{
+				background: rgba(255,255,255,.3);
+			}
+			75%{
+				background: rgba(255,255,255,.1);
+			}
+			100%{
+				background: rgba(255,255,255,1);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="logo">
+			<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+		</div>
+		<div class="text">加载中...</div>
+	</div>
+</body>
+</html>
