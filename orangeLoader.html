@@ -98,6 +98,7 @@
 						progress.innerText = '100.00'
 					} else {
 						let flo = Math.random()*100|0;
+						flo = flo>10? flo:flo*10;
 						progress.innerText = proNum + '.' + flo;
 					}
 				}
