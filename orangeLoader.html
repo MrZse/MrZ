@@ -42,6 +42,8 @@
 		}
 		.text{
 			color:#F0A33F;
+			font-family: '幼圆', Helvetica, Arial, sans-serif;
+			font-size:20px;
 		}
 		.content{
 			width: 95px;
@@ -94,13 +96,18 @@
 			setInterval(()=>{
 				if(+progress.innerText<100){
 					let proNum = +progress.innerText+Math.random()*10|0;
-					if(flo>0&&flo<10){
-						flo *=10;
-						progress.innerText = proNum + '.' + flo;
-					} else if(flo>10) {
-						progress.innerText = proNum + '.' + flo;
+					if(proNum>=100){
+						progress.innerText = '100.00'
 					} else {
-						progress.innerText = proNum + '.00';
+						let flo = Math.random()*100|0;
+						if(flo>0&&flo<10){
+							flo *=10;
+							progress.innerText = proNum + '.' + flo;
+						} else if(flo>10) {
+							progress.innerText = proNum + '.' + flo;
+						} else {
+							progress.innerText = proNum + '.00';
+						}
 					}
 				}
 			},200)
