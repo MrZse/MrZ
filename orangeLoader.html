@@ -94,7 +94,7 @@
 			setInterval(()=>{
 				if(+progress.innerText<100){
 					let proNum = +progress.innerText+Math.random()*10|0;
-					if(proNum>100){
+					if(proNum>=100){
 						progress.innerText = '100.00'
 					} else {
 						let flo = Math.random()*100|0;
