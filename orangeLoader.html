@@ -94,12 +94,13 @@
 			setInterval(()=>{
 				if(+progress.innerText<100){
 					let proNum = +progress.innerText+Math.random()*10|0;
-					if(proNum>=100){
-						progress.innerText = '100.00'
-					} else {
-						let flo = Math.random()*100|0;
-						flo = flo>10? flo:flo*10;
+					if(flo>0&&flo<10){
+						flo *=10;
 						progress.innerText = proNum + '.' + flo;
+					} else if(flo>10) {
+						progress.innerText = proNum + '.' + flo;
+					} else {
+						progress.innerText = proNum + '.00';
 					}
 				}
 			},200)
