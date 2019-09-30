@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>发光字</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link async href="https://fonts.googleapis.com/css?family=Warnes" rel="stylesheet" type="text/css"/>
+	<style>
+		*{
+			margin: 0;
+		}
+		body{
+			background: #000;
+		}
+		.item{
+			width: 300px;
+			height: 300px;
+			border-radius: 10px;
+			border: 2px solid white;
+			position: absolute;
+			color: #fff;
+			font-size: 72px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-family:"Warnes";
+			cursor: pointer;
+			text-shadow: 0 0 10px #FFFFFF, 0 0 15px #FFFFFF, 0 0 30px #FFFFFF,
+			0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de;
+			transition: text-shadow .4s ease;
+			top: 50%;
+			left: 50%;
+			transform: translate3d(-50%,-50%,0);
+		}
+		.item:hover {
+			text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF,
+			0 0 40px #00ffff, 0 0 70px #00ffff, 0 0 80px #00ffff, 0 0 100px #00ffff;
+		}
+		@media screen and (max-width: 420px) {
+			.item{
+				transform: translate3d(-50%,-50%,0) scale(.7);
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="item">Hello<br>world</div>
+</body>
+</html>
